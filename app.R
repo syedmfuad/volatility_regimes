@@ -116,13 +116,20 @@ server <- function(input, output){
   })
   
   output$plot2 <- renderPlot({
-    ggplot(data=dataChart1(), aes(x=date, y=port_returnsq_cr)) + geom_line(size=1, color="#69b3a2")
+    ggplot(data=dataChart1(), aes(x=date, y=port_returnsq_cr)) + geom_line(size=1, group=1, color="#69b3a2") +
+      labs(title = paste0('Cumulative squared return of portfolio with tickers: "', input$stocks,'"'),
+           subtitle = paste0('Months ', format(dataChart1()$date[1], '%Y-%m'), ' to ', 
+                             format(dataChart1()$date[nrow(dataChart1())], '%Y-%m')),
+           x="Date", y="Cumulative squared return", caption="Source: Yahoo API")
   })
     
     output$plot1 <- renderPlot({
-      ggplot(data=dataChart2(), aes(x=date, y=sd)) + geom_line(size=1, color="#69b3a2") + 
-        geom_area(fill="#69b3a2", alpha=0.4) + ggtitle("Volatility regimes") +
-        labs(x="Date", y="Annualized standard deviation") #theme_ipsum() + 
+      ggplot(data=dataChart2(), aes(x=date, y=sd)) + geom_line(size=1, group=1, color="#69b3a2") + 
+        geom_area(fill="#69b3a2", alpha=0.4) +
+        labs(title = paste0('Volatility regime of portfolio with tickers: "', input$stocks,'"'),
+             subtitle = paste0('Months ', format(dataChart1()$date[1], '%Y-%m'), ' to ', 
+                               format(dataChart1()$date[nrow(dataChart2())], '%Y-%m')),
+          x="Date", y="Annualized standard deviation", caption="Source: Yahoo API") #theme_ipsum() + 
     })
 
 }
