@@ -49,6 +49,8 @@ Thus, if we plot the cumulative square returns, then the slope of this line is a
 
 ![](http://latex.codecogs.com/gif.latex?a%20%3D%20%5Cfrac%7Bb%7D%7Bc%7D)
 
+![](http://latex.codecogs.com/gif.latex?n%5Chat%7Bs%7D%5E%7B2%7D_%7Br%7D%5Csimeq%5Csum_%7Bt%3D1%7D%5E%7Bn%7Dr(t)%5E%7B2%7D)
+
 ## Acknowledgment
 * Robert J Frey
 * Jonathan Regenstein
