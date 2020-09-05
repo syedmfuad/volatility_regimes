@@ -47,7 +47,7 @@ $$n\hat{s}^{2}_{r}\simeq\sum_{t=1}^{n}r(t)^{2}$$
 
 Thus, if we plot the cumulative square returns, then the slope of this line is approximately the variance of those returns. If the return switches from one stable volatility regime to another, then this shift shows as an abrupt change in slope of the cumulative square returns. This is a simple but powerful exploratory data analysis technique. With an EDA we are attempting to gain insights that give us intuition about the data.
 
-r latexImg('a = \\frac{b}{c}')
+![](http://latex.codecogs.com/gif.latex?a%20%3D%20%5Cfrac%7Bb%7D%7Bc%7D)
 
 ## Acknowledgment
 * Robert J Frey
