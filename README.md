@@ -25,11 +25,10 @@ To get to the third graph, the first step is to manually fit a series of lines t
 
 This package fits multiple regressions with break-points/change-points relationships. What we do is simply supply a regression model (which in this case is the square returns on an integer index), and the package updates it by adding one or more segmented (piece-wise linear) relationships. One benefit of this package is that the user can look at the square return graph and identify the number of breakpoints which gives us great modelling flexibility. The graph below illustrates the regime changes of the S\&P 500 index (ticker symbol: ^GSPC) between 1985 to 2015 with 20 breakpoints. The thick light green line represents original data and the red line the regimes.
 
-<center>
 
-![The heavy light green line represents original data and the red line the regimes](C:/Users/Syed Fuad/Desktop/GitHub/volatility_regimes/fig1.png)
+#![The heavy light green line represents original data and the red line the regimes](C:/Users/Syed Fuad/Desktop/GitHub/volatility_regimes/fig1.png)
 
-</center>
+![](http://latex.codecogs.com/gif.latex?C:/Users/Syed%20Fuad/Desktop/GitHub/volatility_regimes/fig1.png)
 
 The period is represented by the $i^{th}$ segment, $\tau_{i}$ is a distinct regime. The slope of the $i^{th}$ line segment gives us an estimate of the constant variance. If we multiple each variance by 12 and then take the square root, then we have an annualized estimate of the standard deviation, $\hat{s}_{annual}(\tau_{i})=\sqrt{12*\hat{s}_{monthly}(\tau_{i})^{2}}$.
 
@@ -37,26 +36,19 @@ The period is represented by the $i^{th}$ segment, $\tau_{i}$ is a distinct regi
 
 The variance, $\sigma^{2}_{r}$, of return can be expressed by the following, where R is the random variable representing return:
 
-$$\sigma^{2}_{r}=E[R^{2}]-E[R^{2}]$$
+![](http://latex.codecogs.com/gif.latex?%5Csigma%5E%7B2%7D_%7Br%7D%3DE[R%5E%7B2%7D]-E[R%5E%7B2%7D])
 
 If we take the maximum likelihood estimate (MLE) for the sample variance, $\hat{s}^{2}_{r}$, and multiply both sides by the sample size, $\textit{n}$, we have:
-
-#$$n\hat{s}^{2}_{r}=\sum_{t=1}^{n}r(t)^{2}-\frac{(\sum_{t=1}^{n}r(t))^{2}}{n}$$
 
 ![](http://latex.codecogs.com/gif.latex?n%5Chat%7Bs%7D%5E%7B2%7D_%7Br%7D%3D%5Csum_%7Bt%3D1%7D%5E%7Bn%7Dr(t)%5E%7B2%7D-%5Cfrac%7B(%5Csum_%7Bt%3D1%7D%5E%7Bn%7Dr(t))%5E%7B2%7D%7D%7Bn%7D)
 
 For most return time series, the term to the left of the minus sign is much larger than the term on the right. This leads to the following approximation:
 
-#$$n\hat{s}^{2}_{r}\simeq\sum_{t=1}^{n}r(t)^{2}$$
 <p align="center">
 ![](http://latex.codecogs.com/gif.latex?n%5Chat%7Bs%7D%5E%7B2%7D_%7Br%7D%5Csimeq%5Csum_%7Bt%3D1%7D%5E%7Bn%7Dr(t)%5E%7B2%7D)
 </p>
 
 Thus, if we plot the cumulative square returns, then the slope of this line is approximately the variance of those returns. If the return switches from one stable volatility regime to another, then this shift shows as an abrupt change in slope of the cumulative square returns. This is a simple but powerful exploratory data analysis technique. With an EDA we are attempting to gain insights that give us intuition about the data.
-
-![](http://latex.codecogs.com/gif.latex?a%20%3D%20%5Cfrac%7Bb%7D%7Bc%7D)
-
-![](http://latex.codecogs.com/gif.latex?n%5Chat%7Bs%7D%5E%7B2%7D_%7Br%7D%5Csimeq%5Csum_%7Bt%3D1%7D%5E%7Bn%7Dr(t)%5E%7B2%7D)
 
 ## Acknowledgment
 * Robert J Frey
