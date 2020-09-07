@@ -25,10 +25,7 @@ To get to the third graph, the first step is to manually fit a series of lines t
 
 This package fits multiple regressions with break-points/change-points relationships. What we do is simply supply a regression model (which in this case is the square returns on an integer index), and the package updates it by adding one or more segmented (piece-wise linear) relationships. One benefit of this package is that the user can look at the square return graph and identify the number of breakpoints which gives us great modelling flexibility. The graph below illustrates the regime changes of the S\&P 500 index (ticker symbol: ^GSPC) between 1985 to 2015 with 20 breakpoints. The thick light green line represents original data and the red line the regimes.
 
-
-#![The heavy light green line represents original data and the red line the regimes](C:/Users/Syed Fuad/Desktop/GitHub/volatility_regimes/fig1.png)
-
-![](http://latex.codecogs.com/gif.latex?C:/Users/Syed%20Fuad/Desktop/GitHub/volatility_regimes/fig1.png)
+![The heavy light green line represents original data and the red line the regimes](C:/Users/Syed Fuad/Desktop/GitHub/volatility_regimes/fig1.png)
 
 The period is represented by the $i^{th}$ segment, $\tau_{i}$ is a distinct regime. The slope of the $i^{th}$ line segment gives us an estimate of the constant variance. If we multiple each variance by 12 and then take the square root, then we have an annualized estimate of the standard deviation, $\hat{s}_{annual}(\tau_{i})=\sqrt{12*\hat{s}_{monthly}(\tau_{i})^{2}}$.
 
