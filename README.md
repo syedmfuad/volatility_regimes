@@ -41,11 +41,13 @@ $$\sigma^{2}_{r}=E[R^{2}]-E[R^{2}]$$
 
 If we take the maximum likelihood estimate (MLE) for the sample variance, $\hat{s}^{2}_{r}$, and multiply both sides by the sample size, $\textit{n}$, we have:
 
-$$n\hat{s}^{2}_{r}=\sum_{t=1}^{n}r(t)^{2}-\frac{(\sum_{t=1}^{n}r(t))^{2}}{n}$$
+#$$n\hat{s}^{2}_{r}=\sum_{t=1}^{n}r(t)^{2}-\frac{(\sum_{t=1}^{n}r(t))^{2}}{n}$$
+
+![](http://latex.codecogs.com/gif.latex?n%5Chat%7Bs%7D%5E%7B2%7D_%7Br%7D%3D%5Csum_%7Bt%3D1%7D%5E%7Bn%7Dr(t)%5E%7B2%7D-%5Cfrac%7B(%5Csum_%7Bt%3D1%7D%5E%7Bn%7Dr(t))%5E%7B2%7D%7D%7Bn%7D)
 
 For most return time series, the term to the left of the minus sign is much larger than the term on the right. This leads to the following approximation:
 
-$$n\hat{s}^{2}_{r}\simeq\sum_{t=1}^{n}r(t)^{2}$$
+#$$n\hat{s}^{2}_{r}\simeq\sum_{t=1}^{n}r(t)^{2}$$
 <p align="center">
 ![](http://latex.codecogs.com/gif.latex?n%5Chat%7Bs%7D%5E%7B2%7D_%7Br%7D%5Csimeq%5Csum_%7Bt%3D1%7D%5E%7Bn%7Dr(t)%5E%7B2%7D)
 </p>
