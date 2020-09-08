@@ -49,10 +49,16 @@ ui <- fluidPage(
                                                                        "Monthly"="months", "Weekly"="weeks",
                                                                        "Daily"="days"), selected="months"))),
   
+  fluidRow(
+    column(4, ailgn="center",
+           selectInput("ret_chain", "Return chaining", choices=list("Simple"="discrete", "Log"="log"), 
+                       selected="discrete"))),
+  
   actionButton("go", "Get Charts", class="btn-primary"),
   
   mainPanel(
     tabsetPanel(
+      tabPanel("Cumulative returns", plotOutput("plot3")),
       tabPanel("Cumulative squared returns", plotOutput("plot2")),
       tabPanel("Volatility regimes", plotOutput("plot1"))
     )
@@ -80,7 +86,7 @@ server <- function(input, output){
 
     adj_prices <- map(tickers, GetMySymbols) %>% map(Ad) %>% reduce(merge.xts) %>%
       to.monthly(indexAt="lastof", OHLC=FALSE) %>% `colnames<-` (tickers) %>%
-      Return.calculate(method="discrete") %>% na.omit() 
+      Return.calculate(method=input$ret_chain) %>% na.omit() 
     
     adj_returns_port <- Return.portfolio(adj_prices, weights=w, rebalance_on=input$rebalance) %>% 
       as.data.frame()
@@ -91,7 +97,8 @@ server <- function(input, output){
   dataChart1 <- reactive({
 
     chart1 <- returns_adj()
-    chart1$port_returnsq_cr <- cumprod(1+(chart1$portfolio.returns)**2)
+    chart1$port_returnsq_cr <- cumprod(1+(chart1$portfolio.returns)**2)-1
+    chart1$port_return_cr <- cumprod(1+(chart1$portfolio.returns))
     chart1$date <- rownames(chart1)
     chart1$date <- as.Date(chart1$date, format = "%Y-%m-%d")
     chart1
@@ -115,6 +122,14 @@ server <- function(input, output){
     df_i_want
   })
   
+  output$plot3 <- renderPlot({
+    ggplot(data=dataChart1(), aes(x=date, y=port_return_cr)) + geom_line(size=1, group=1, color="#69b3a2") +
+      labs(title = paste0('Cumulative squared return of portfolio with tickers: "', input$stocks,'"'),
+           subtitle = paste0('Months ', format(dataChart1()$date[1], '%Y-%m'), ' to ', 
+                             format(dataChart1()$date[nrow(dataChart1())], '%Y-%m')),
+           x="Date", y="Cumulative return", caption="Source: Yahoo API")
+  })
+  
   output$plot2 <- renderPlot({
     ggplot(data=dataChart1(), aes(x=date, y=port_returnsq_cr)) + geom_line(size=1, group=1, color="#69b3a2") +
       labs(title = paste0('Cumulative squared return of portfolio with tickers: "', input$stocks,'"'),
@@ -136,3 +151,9 @@ server <- function(input, output){
 
 # Run the application
 shinyApp(ui = ui, server = server)
+
+#p = ggplot() + geom_line(data = df_i_want, aes(x = x, y = sq), color = "turquoise3", size=4) +
+  #geom_line(data = df_i_want, aes(x = x, y = y), color = "tomato", size=1.25) + 
+  #labs(title = paste0("Volatility regime of ^GSPC"),
+       #subtitle = paste0("Months 1985-02 to 2015-12"),
+       #x="Index", y="Cumulative square return", caption="Source: Yahoo API")
