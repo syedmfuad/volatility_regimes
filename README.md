@@ -1,5 +1,5 @@
 # volatility_regimes
-This simple R shiny app (currently undeployed, but fully functional) takes one or more ticker symbols as inputs and returns the portfolio (or stock, in case of an individual stock) cumulative log return, cumulative return square and volatility regime changes. The materials for this webapp came from blog posts by Robert J Frey (of Renaissance Tech fame).
+This simple R shiny app (currently undeployed, but functional) takes one or more ticker symbols as inputs and returns the portfolio (or stock, in case of an individual stock) cumulative log return, cumulative return square and volatility regime changes. The materials for this webapp came from blog posts by Robert J Frey (of Renaissance Tech fame).
 
 The focus of this webapp is not to undertake a deep and thorough analysis of economic trends, but to undertake a simple and straightforward "quick and dirty" analysis leading to powerful insights on market behavior. 
 
