@@ -45,8 +45,4 @@ For most return time series, the term to the left of the minus sign is much larg
 
 Thus, if we plot the cumulative square returns, then the slope of this line is approximately the variance of those returns. If the return switches from one stable volatility regime to another, then this shift shows as an abrupt change in slope of the cumulative square returns. This is a simple but powerful exploratory data analysis technique. With an EDA we are attempting to gain insights that give us intuition about the data.
 
-## Acknowledgment
-* Robert J Frey
-* Jonathan Regenstein
-* David Harper
 
